@@ -17,7 +17,6 @@ extension UIImage {
         var compressingValue: CGFloat = 1.0
         while (needCompress && compressingValue > 0.0) {
             if let data: Data = UIImageJPEGRepresentation(self, compressingValue) {
-                print("Size of image in Bytes: ", data.count)
                 if CGFloat(data.count) < sizeInBytes {
                     needCompress = false
                     imgData = data
@@ -32,5 +31,21 @@ extension UIImage {
             }
         }
         return nil
+    }
+    
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

@@ -30,16 +30,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let userPickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             SVProgressHUD.show()
             
-            if let compressedImage = userPickedImage.compressTo(0.25) {
+            var modifiedImage: UIImage?
+            
+            if let imageSize = UIImagePNGRepresentation(userPickedImage)?.count {
+                print("Original size of image in Bytes: ", imageSize)
+            }
+            
+            if let resizedByPercentage = userPickedImage.resized(withPercentage: 0.5) {
+                if let imageSize = UIImagePNGRepresentation(resizedByPercentage)?.count {
+                    print("Size of image after resizedByPercentage: ", imageSize)
+                }
+                modifiedImage = resizedByPercentage
+            }
+            
+            if let resizedByWidth = userPickedImage.resized(toWidth: 500) {
+                if let imageSize = UIImagePNGRepresentation(resizedByWidth)?.count {
+                    print("Size of image after resizedByWidth: ", imageSize)
+                }
+//                modifiedImage = resizedByWidth
+            }
+            
+            if let compressed = userPickedImage.compressTo(0.5) {
+                if let imageSize = UIImagePNGRepresentation(compressed)?.count {
+                    print("Size of image after compression: ", imageSize)
+                }
+//                modifiedImage = compressed
+            }
+            
+            if let image = modifiedImage {
                 self.navigationItem.title = "Processing..."
-                imageView.image = compressedImage
+                imageView.image = image
                 
-                guard let ciImage = CIImage(image: compressedImage) else {
+                guard let ciImage = CIImage(image: image) else {
                     fatalError("Could not convert UIImage to CIImage.")
                 }
                 detect(image: ciImage)
-            } else {
-                print("Compression failed")
             }
         }
     }
@@ -47,7 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
         imagePicker.allowsEditing = true
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
     
