@@ -36,18 +36,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("Original size of image in Bytes: ", imageSize)
             }
             
-            if let resizedByPercentage = userPickedImage.resized(withPercentage: 0.5) {
+            if let resizedByPercentage = userPickedImage.resized(withPercentage: 0.25) {
                 if let imageSize = UIImagePNGRepresentation(resizedByPercentage)?.count {
                     print("Size of image after resizedByPercentage: ", imageSize)
                 }
-                modifiedImage = resizedByPercentage
+//                modifiedImage = resizedByPercentage
             }
             
-            if let resizedByWidth = userPickedImage.resized(toWidth: 500) {
+            if let resizedByWidth = userPickedImage.resized(toWidth: 100) {
                 if let imageSize = UIImagePNGRepresentation(resizedByWidth)?.count {
                     print("Size of image after resizedByWidth: ", imageSize)
                 }
-//                modifiedImage = resizedByWidth
+                modifiedImage = resizedByWidth
             }
             
             if let compressed = userPickedImage.compressTo(0.5) {
