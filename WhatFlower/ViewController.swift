@@ -29,14 +29,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         if let userPickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             SVProgressHUD.show()
-
-            self.navigationItem.title = "Processing..."
-            imageView.image = userPickedImage
-
-            guard let ciImage = CIImage(image: userPickedImage) else {
-                fatalError("Could not convert UIImage to CIImage.")
+            
+            if let compressedImage = userPickedImage.compressTo(0.25) {
+                self.navigationItem.title = "Processing..."
+                imageView.image = compressedImage
+                
+                guard let ciImage = CIImage(image: compressedImage) else {
+                    fatalError("Could not convert UIImage to CIImage.")
+                }
+                detect(image: ciImage)
+            } else {
+                print("Compression failed")
             }
-            detect(image: ciImage)
         }
     }
     

@@ -13,6 +13,7 @@
 		1815FD0A1F7CC8EC00725319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1815FD091F7CC8EC00725319 /* Assets.xcassets */; };
 		1815FD0D1F7CC8EC00725319 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1815FD0B1F7CC8EC00725319 /* LaunchScreen.storyboard */; };
 		18837AAC1FAAFED5009BC043 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 18837AAA1FAAFD0E009BC043 /* FlowerClassifier.mlmodel */; };
+		18837AAE1FAB005B009BC043 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18837AAD1FAB005B009BC043 /* Extension.swift */; };
 		6996A6EDBDE7D4D963CACC10 /* Pods_WhatFlower.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3258514C6FB574D3829F2E73 /* Pods_WhatFlower.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		1815FD0C1F7CC8EC00725319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1815FD0E1F7CC8EC00725319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18837AAA1FAAFD0E009BC043 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
+		18837AAD1FAB005B009BC043 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1F73E5F74384C9573CAC388F /* Pods-WhatFlower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatFlower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatFlower/Pods-WhatFlower.debug.xcconfig"; sourceTree = "<group>"; };
 		2565AD774870EB90B0600F56 /* Pods-WhatFlower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatFlower.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatFlower/Pods-WhatFlower.release.xcconfig"; sourceTree = "<group>"; };
 		3258514C6FB574D3829F2E73 /* Pods_WhatFlower.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatFlower.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 			children = (
 				1815FD021F7CC8EC00725319 /* AppDelegate.swift */,
 				1815FD041F7CC8EC00725319 /* ViewController.swift */,
+				18837AAD1FAB005B009BC043 /* Extension.swift */,
 				1815FD061F7CC8EC00725319 /* Main.storyboard */,
 				1815FD091F7CC8EC00725319 /* Assets.xcassets */,
 				1815FD0B1F7CC8EC00725319 /* LaunchScreen.storyboard */,
@@ -237,6 +240,7 @@
 				18837AAC1FAAFED5009BC043 /* FlowerClassifier.mlmodel in Sources */,
 				1815FD051F7CC8EC00725319 /* ViewController.swift in Sources */,
 				1815FD031F7CC8EC00725319 /* AppDelegate.swift in Sources */,
+				18837AAE1FAB005B009BC043 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
