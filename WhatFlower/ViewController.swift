@@ -36,25 +36,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("Original size of image in Bytes: ", imageSize)
             }
             
-            if let resizedByPercentage = userPickedImage.resized(withPercentage: 0.25) {
-                if let imageSize = UIImagePNGRepresentation(resizedByPercentage)?.count {
-                    print("Size of image after resizedByPercentage: ", imageSize)
-                }
+//            if let resizedByPercentage = userPickedImage.resized(withPercentage: 0.25) {
+//                if let imageSize = UIImagePNGRepresentation(resizedByPercentage)?.count {
+//                    print("Size of image after resizedByPercentage: ", imageSize)
+//                }
 //                modifiedImage = resizedByPercentage
-            }
-            
-            if let resizedByWidth = userPickedImage.resized(toWidth: 100) {
-                if let imageSize = UIImagePNGRepresentation(resizedByWidth)?.count {
-                    print("Size of image after resizedByWidth: ", imageSize)
-                }
-                modifiedImage = resizedByWidth
-            }
-            
-            if let compressed = userPickedImage.compressTo(0.5) {
-                if let imageSize = UIImagePNGRepresentation(compressed)?.count {
-                    print("Size of image after compression: ", imageSize)
-                }
+//            }
+
+//            if let resizedByWidth = userPickedImage.resized(toWidth: 100) {
+//                if let imageSize = UIImagePNGRepresentation(resizedByWidth)?.count {
+//                    print("Size of image after resizedByWidth: ", imageSize)
+//                }
+//                modifiedImage = resizedByWidth
+//            }
+
+//            if let compressed = userPickedImage.compressTo(expectedSizeInMb: 0.5) {
+//                if let imageSize = UIImagePNGRepresentation(compressed)?.count {
+//                    print("Size of image after compression: ", imageSize)
+//                }
 //                modifiedImage = compressed
+//            }
+            
+            if let resize = userPickedImage.resizeTo(expectedSizeInMb: 0.05) {
+                if let imageSize = UIImagePNGRepresentation(resize)?.count {
+                    print("Size of image after resize: ", imageSize)
+                }
+                modifiedImage = resize
             }
             
             if let image = modifiedImage {
