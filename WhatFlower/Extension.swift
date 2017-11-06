@@ -34,6 +34,7 @@ extension UIImage {
         }
     }
     
+    // Function for drawing image on a canvas with a specified width and height
     func resized(withPercentage percentage: CGFloat, imageToResize: UIImage) -> UIImage? {
         let canvasSize = CGSize(width: imageToResize.size.width * percentage, height: imageToResize.size.height * percentage)
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, imageToResize.scale)
@@ -43,25 +44,37 @@ extension UIImage {
     }
     
     func resizeTo(expectedSizeInMb: CGFloat) -> UIImage? {
+        
+        // Expected size of image to be converted (in Bytes)
         let sizeInBytes = expectedSizeInMb * 1024 * 1024
+        
+        // Check for the while loop
         var needResize: Bool = true
         var imageToResize = self
         
         while needResize {
+            
+            // Determine the current size of image from image data
             if let imgData = UIImagePNGRepresentation(imageToResize) {
                 let currentSize = CGFloat(imgData.count)
+                print(currentSize)
+                
+                // Break the loop if size of image has become less than or equal to expected size
                 if currentSize < sizeInBytes {
                     needResize = false
                     return imageToResize
                 } else {
-                    if let image = self.resized(withPercentage: 0.9, imageToResize: imageToResize) {
+                    // Compress image using canvas method mentioned above
+                    if let image = self.resized(withPercentage: 0.95, imageToResize: imageToResize) {
                         imageToResize = image
                     } else {
+                        // If compression fails, return nil
                         needResize = false
                         return nil
                     }
                 }
             } else {
+                // If image data cannot be loaded, return nil
                 needResize = false
                 return nil
             }
